@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Campus Task Manager
 
-## Getting Started
+Campus Task Manager is an AI-powered academic planning tool designed for students to manage coursework, assignments, deadlines, and study focus in one place.
 
-First, run the development server:
+## Problem
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Students often receive assignment briefs but struggle to break them down into clear tasks, estimate workload, and decide what to work on first when deadlines overlap.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Solution
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Campus Task Manager helps students:
+- Add courses they are taking
+- Paste assignment instructions
+- Generate AI-powered action plans
+- Estimate workload and difficulty
+- Track deadlines in an academic calendar
+- View upcoming deadline alerts
+- See today's recommended focus tasks
+- Generate emergency rescue plans when deadlines are near
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key Features
 
-## Learn More
+- User authentication with Supabase Auth
+- Course-based task organization
+- AI assignment planner using Gemini API
+- Deadline-based priority calculation
+- Academic calendar view
+- Today's Focus recommendations
+- Due date alerts
+- Task progress tracking
+- Emergency rescue plan generation
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Supabase
+- Gemini API
+- Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Product Thinking
 
-## Deploy on Vercel
+The project follows the Campus Task Manager challenge brief, but extends it with AI-powered academic planning. Instead of only storing tasks, the system helps students understand what to do next, especially when they have multiple deadlines.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Demo Account
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Email: your-demo-email@example.com  
+Password: your-demo-password
+
+## Environment Variables
+
+Create a `.env.local` file:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+GEMINI_API_KEY=your_gemini_api_key

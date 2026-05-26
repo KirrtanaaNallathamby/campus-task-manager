@@ -1,65 +1,178 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { supabase } from "@/lib/supabase";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
+  const [user, setUser] = useState<any>(null);
+  const [checkingUser, setCheckingUser] = useState(true);
+
+  useEffect(() => {
+    checkUser();
+  }, []);
+
+  async function checkUser() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    setUser(user);
+    setCheckingUser(false);
+  }
+
+  async function logout() {
+    await supabase.auth.signOut();
+    setUser(null);
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-[#f8f5ef] px-6 py-10">
+      <section className="mx-auto max-w-6xl">
+        <nav className="mb-10 flex items-center justify-between">
+          <p className="text-lg font-bold text-slate-900">Campus Task Manager</p>
+
+          {!checkingUser &&
+            (user ? (
+              <Navbar />
+            ) : (
+              <div className="flex gap-3">
+                <Link
+                  href="/auth"
+                  className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-900 hover:text-white"
+                >
+                  Login
+                </Link>
+
+                <Link
+                  href="/auth"
+                  className="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-sm"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            ))}
+        </nav>
+
+        <div className="grid items-center gap-8 lg:grid-cols-2">
+          <div>
+            <p className="mb-4 inline-block rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-600 shadow-sm">
+              Built for students with too many deadlines
+            </p>
+
+            <h1 className="text-5xl font-bold leading-tight tracking-tight text-slate-900">
+              Manage coursework, deadlines, and study plans in one place.
+            </h1>
+
+            <p className="mt-5 max-w-xl text-lg leading-8 text-slate-600">
+              An AI-powered academic planning tool that helps students organise
+              courses, turn assignment briefs into action plans, track deadlines,
+              and focus on what to do next.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              {user ? (
+                <>
+                  <Link
+                    href="/ai-planner"
+                    className="rounded-2xl bg-slate-900 px-6 py-4 font-medium text-white shadow-sm hover:bg-slate-700"
+                  >
+                    Create my plan
+                  </Link>
+
+                  <Link
+                    href="/dashboard"
+                    className="rounded-2xl bg-white px-6 py-4 font-medium text-slate-700 shadow-sm hover:bg-slate-100"
+                  >
+                    View calendar
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/auth"
+                    className="rounded-2xl bg-slate-900 px-6 py-4 font-medium text-white shadow-sm hover:bg-slate-700"
+                  >
+                    Get Started
+                  </Link>
+
+                </>
+              )}
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] bg-white p-6 shadow-sm">
+            <h2 className="text-xl font-bold text-slate-900">How it works</h2>
+
+            <div className="mt-5 space-y-4">
+              <HomeStep
+                number="01"
+                title="Paste your assignment instructions"
+              />
+
+              <HomeStep
+                number="02"
+                title="AI generates a structured study plan"
+              />
+
+              <HomeStep
+                number="03"
+                title="Save tasks into your academic calendar"
+              />
+
+              <HomeStep
+                number="04"
+                title="Generate emergency rescue plans when needed"
+              />
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          <FeatureCard
+            title="Paste, don’t overthink"
+            text="Students can paste assignment instructions directly instead of manually creating every task."
+          />
+
+          <FeatureCard
+            title="See deadlines clearly"
+            text="Saved tasks appear on an academic calendar so upcoming work is easier to track."
+          />
+
+          <FeatureCard
+            title="Recover when behind"
+            text="Emergency rescue plans help students focus on what matters when the deadline is near."
+          />
         </div>
-      </main>
+      </section>
+    </main>
+  );
+}
+
+function FeatureCard({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="rounded-3xl bg-white p-6 shadow-sm">
+      <h2 className="font-semibold text-slate-900">{title}</h2>
+      <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+    </div>
+  );
+}
+
+function HomeStep({
+  number,
+  title,
+}: {
+  number: string;
+  title: string;
+}) {
+  return (
+    <div className="flex items-center gap-4 rounded-2xl bg-slate-50 p-4">
+      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">
+        {number}
+      </div>
+
+      <p className="font-medium text-slate-800">{title}</p>
     </div>
   );
 }
