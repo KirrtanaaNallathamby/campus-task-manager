@@ -494,21 +494,21 @@ export default function DashboardPage() {
               <div className="flex gap-2">
                 <button
                   onClick={goToPreviousMonth}
-                  className="rounded-xl border border-slate-200 px-3 py-2 text-sm transition hover:bg-slate-50"
+                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 hover:bg-slate-100"
                 >
                   Prev
                 </button>
 
                 <button
                   onClick={goToToday}
-                  className="rounded-xl border border-slate-200 px-3 py-2 text-sm transition hover:bg-slate-50"
+                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 hover:bg-slate-100"
                 >
                   Today
                 </button>
 
                 <button
                   onClick={goToNextMonth}
-                  className="rounded-xl border border-slate-200 px-3 py-2 text-sm transition hover:bg-slate-50"
+                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 hover:bg-slate-100"
                 >
                   Next
                 </button>
