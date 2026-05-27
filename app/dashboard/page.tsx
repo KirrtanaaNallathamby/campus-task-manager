@@ -130,25 +130,19 @@ export default function DashboardPage() {
     try {
       setRescueLoading(true);
 
-      const response = await fetch("/api/rescue-plan", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ task }),
-      });
+      const steps = task.action_plan?.steps || [];
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        alert(data.error || "Failed to generate rescue plan.");
-        return;
-      }
+      const rescuePlan = [
+        steps[0] ? `Start with: ${steps[0]}` : "Focus on the main requirement first.",
+        steps[1] ? `Then complete: ${steps[1]}` : "Skip non-essential improvements.",
+        "Do testing only for the core features.",
+        "Prepare the report and final submission.",
+      ].join("\n");
 
       const { error } = await supabase
         .from("tasks")
         .update({
-          rescue_plan: data.rescuePlan,
+          rescue_plan: rescuePlan,
         })
         .eq("id", task.id);
 
@@ -159,12 +153,11 @@ export default function DashboardPage() {
 
       const updatedTask = {
         ...task,
-        rescue_plan: data.rescuePlan,
+        rescue_plan: rescuePlan,
       };
 
       setSelectedTask(updatedTask);
-      checkUserAndFetchTasks();
-      alert("Emergency rescue plan updated.");
+      await checkUserAndFetchTasks();
     } catch (error) {
       console.error(error);
       alert("Something went wrong.");
@@ -685,7 +678,7 @@ export default function DashboardPage() {
 
                 <div className="mt-6 rounded-2xl bg-orange-50 p-4">
                   <h3 className="font-semibold text-orange-900">Rescue Plan</h3>
-                  <p className="mt-2 text-sm leading-6 text-orange-800">
+                  <p className="mt-2 whitespace-pre-line text-sm leading-6 text-orange-800">
                     {selectedTask.rescue_plan}
                   </p>
                 </div>

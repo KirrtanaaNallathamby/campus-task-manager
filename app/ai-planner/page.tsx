@@ -337,7 +337,7 @@ export default function AIPlannerPage() {
             <div className="mt-8 grid gap-4 lg:grid-cols-2">
               <div className="rounded-2xl bg-orange-50 p-5">
                 <h3 className="font-semibold text-orange-900">Rescue Plan</h3>
-                <p className="mt-2 text-sm leading-6 text-orange-800">
+                <p className="mt-2 whitespace-pre-line text-sm leading-6 text-orange-800">
                   {result.rescuePlan}
                 </p>
               </div>
