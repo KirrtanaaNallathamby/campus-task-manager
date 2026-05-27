@@ -210,7 +210,7 @@ export default function AIPlannerPage() {
                     "For Database Systems assignment, design a university course registration system. Create ERD, normalize tables to 3NF, implement SQL queries, and prepare a report. Submission deadline is 15 June 2026."
                   )
                 }
-                className="mt-4 rounded-xl bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-200"
+                className="mt-4 rounded-xl bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700 transition duration-200 hover:-translate-y-1 hover:bg-slate-900 hover:text-white hover:shadow-lg"
               >
                 Use Example
               </button>
@@ -255,7 +255,7 @@ export default function AIPlannerPage() {
             <button
               onClick={generatePlan}
               disabled={loading || instruction.trim() === ""}
-              className="mt-4 w-full rounded-2xl bg-slate-900 px-5 py-3 font-medium text-white shadow-sm transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-50"
+              className="mt-4 w-full rounded-2xl bg-slate-900 px-5 py-3 font-medium text-white shadow-sm transition duration-200 hover:-translate-y-1 hover:bg-slate-700 hover:shadow-lg"
             >
               {loading ? "Generating your plan..." : "Generate Plan"}
             </button>
@@ -354,14 +354,14 @@ export default function AIPlannerPage() {
               <button
                 onClick={saveTask}
                 disabled={saving}
-                className="rounded-2xl bg-green-700 px-6 py-3 font-medium text-white shadow-sm transition hover:bg-green-800 disabled:opacity-50"
+                className="rounded-2xl bg-green-700 px-6 py-3 font-medium text-white shadow-sm transition duration-200 hover:-translate-y-1 hover:bg-green-800 hover:shadow-lg"
               >
                 {saving ? "Saving Task..." : "Save Task"}
               </button>
 
               <Link
                 href="/dashboard"
-                className="rounded-2xl border border-slate-200 px-6 py-3 font-medium text-slate-700 hover:bg-slate-50"
+                className="rounded-2xl border border-slate-200 px-6 py-3 font-medium text-slate-700 transition duration-200 hover:-translate-y-1 hover:bg-slate-50 hover:shadow-lg"
               >
                 Go to Dashboard
               </Link>

@@ -161,7 +161,7 @@ export default function CoursesPage() {
             <button
               onClick={addCourse}
               disabled={loading}
-              className="mt-6 w-full rounded-2xl bg-slate-900 px-5 py-3 font-medium text-white shadow-sm hover:bg-slate-700 disabled:opacity-50"
+              className="mt-6 w-full rounded-2xl bg-slate-900 px-5 py-3 font-medium text-white shadow-sm transition duration-200 hover:-translate-y-1 hover:bg-slate-700 hover:shadow-lg disabled:opacity-50"
             >
               {loading ? "Adding Course..." : "Add Course"}
             </button>
@@ -180,7 +180,7 @@ export default function CoursesPage() {
               {courses.map((course) => (
                 <div
                   key={course.id}
-                  className="flex items-center justify-between rounded-2xl bg-slate-50 p-4"
+                  className="flex items-center justify-between rounded-2xl bg-slate-50 p-4 transition duration-200 hover:-translate-y-1 hover:shadow-md"
                 >
                   <div>
                     <p className="font-semibold text-slate-900">
@@ -194,7 +194,7 @@ export default function CoursesPage() {
 
                   <button
                     onClick={() => deleteCourse(course.id)}
-                    className="rounded-xl bg-red-100 px-3 py-2 text-sm font-medium text-red-700 hover:bg-red-200"
+                    className="rounded-xl bg-red-100 px-3 py-2 text-sm font-medium text-red-700 transition duration-200 hover:-translate-y-1 hover:bg-red-200 hover:shadow-md"
                   >
                     Delete
                   </button>

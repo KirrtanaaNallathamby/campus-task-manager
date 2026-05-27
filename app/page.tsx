@@ -40,14 +40,14 @@ export default function Home() {
               <div className="flex gap-3">
                 <Link
                   href="/auth"
-                  className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-900 hover:text-white"
+                  className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition duration-200 hover:-translate-y-1 hover:bg-slate-900 hover:text-white hover:shadow-lg"
                 >
                   Login
                 </Link>
 
                 <Link
                   href="/auth"
-                  className="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-sm"
+                  className="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition duration-200 hover:-translate-y-1 hover:bg-slate-900 hover:text-white hover:shadow-lg"
                 >
                   Sign Up
                 </Link>
@@ -76,14 +76,14 @@ export default function Home() {
                 <>
                   <Link
                     href="/ai-planner"
-                    className="rounded-2xl bg-slate-900 px-6 py-4 font-medium text-white shadow-sm hover:bg-slate-700"
+                    className="rounded-2xl bg-slate-900 px-6 py-4 font-medium text-white shadow-sm transition duration-200 hover:-translate-y-1 hover:bg-slate-900 hover:text-white hover:shadow-lg"
                   >
                     Create my plan
                   </Link>
 
                   <Link
                     href="/dashboard"
-                    className="rounded-2xl bg-white px-6 py-4 font-medium text-slate-700 shadow-sm hover:bg-slate-100"
+                    className="rounded-2xl bg-white px-6 py-4 font-medium text-slate-700 shadow-sm transition duration-200 hover:-translate-y-1 hover:bg-slate-100 hover:shadow-lg"
                   >
                     View calendar
                   </Link>
@@ -152,7 +152,7 @@ export default function Home() {
 
 function FeatureCard({ title, text }: { title: string; text: string }) {
   return (
-    <div className="rounded-3xl bg-white p-6 shadow-sm">
+    <div className="flex items-center gap-4 rounded-2xl bg-slate-50 p-4 transition duration-200 hover:-translate-y-1 hover:shadow-md">
       <h2 className="font-semibold text-slate-900">{title}</h2>
       <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
     </div>

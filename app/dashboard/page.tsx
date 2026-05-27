@@ -320,7 +320,7 @@ export default function DashboardPage() {
                     setSelectedTask(task);
                     setCurrentMonth(new Date(task.due_date));
                   }}
-                  className="block w-full rounded-xl bg-white p-3 text-left text-sm shadow-sm hover:bg-orange-100"
+                  className="block w-full rounded-xl bg-white p-3 text-left text-sm shadow-sm transition duration-200 hover:-translate-y-1 hover:bg-orange-100 hover:shadow-md"
                 >
                   <p className="font-medium text-orange-900">
                     {task.title}
@@ -358,7 +358,7 @@ export default function DashboardPage() {
                 <button
                   key={task.id}
                   onClick={() => setSelectedTask(task)}
-                  className="block w-full rounded-2xl border border-slate-200 bg-slate-50 p-4 text-left transition hover:bg-slate-100"
+                  className="block w-full rounded-2xl border border-slate-200 bg-slate-50 p-4 text-left transition duration-200 hover:-translate-y-1 hover:bg-slate-100 hover:shadow-md"
                 >
                   <div className="flex items-center justify-between">
                     <p className="font-semibold text-slate-900">
@@ -414,7 +414,7 @@ export default function DashboardPage() {
                       setSelectedTask(task);
                       setCurrentMonth(new Date(task.due_date));
                     }}
-                    className="block w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-left transition hover:bg-slate-100"
+                    className="block w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-left transition duration-200 hover:-translate-y-1 hover:bg-slate-100 hover:shadow-md"
                   >
                     <p className="font-medium text-slate-900">{task.title}</p>
 
@@ -458,7 +458,7 @@ export default function DashboardPage() {
                       setCurrentMonth(new Date(task.due_date));
                       setSearchTerm("");
                     }}
-                    className="block w-full rounded-xl border border-slate-200 bg-slate-50 p-4 text-left transition hover:bg-slate-100"
+                    className="block w-full rounded-xl border border-slate-200 bg-slate-50 p-4 text-left transition duration-200 hover:-translate-y-1 hover:bg-slate-100 hover:shadow-md"
                   >
                     <p className="font-semibold text-slate-900">
                       {task.title}
@@ -487,21 +487,21 @@ export default function DashboardPage() {
               <div className="flex gap-2">
                 <button
                   onClick={goToPreviousMonth}
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 hover:bg-slate-100"
+                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 shadow-sm transition duration-200 hover:-translate-y-1 hover:bg-slate-100 hover:shadow-md"
                 >
                   Prev
                 </button>
 
                 <button
                   onClick={goToToday}
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 hover:bg-slate-100"
+                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 shadow-sm transition duration-200 hover:-translate-y-1 hover:bg-slate-100 hover:shadow-md"
                 >
                   Today
                 </button>
 
                 <button
                   onClick={goToNextMonth}
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 hover:bg-slate-100"
+                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 shadow-sm transition duration-200 hover:-translate-y-1 hover:bg-slate-100 hover:shadow-md"
                 >
                   Next
                 </button>
@@ -548,7 +548,7 @@ export default function DashboardPage() {
                         <button
                           key={task.id}
                           onClick={() => setSelectedTask(task)}
-                          className={`block w-full rounded-lg px-2 py-1 text-left text-xs ${
+                          className={`block w-full rounded-lg px-2 py-1 text-left text-xs transition duration-200 hover:scale-105 ${
                             isOverdue(task.due_date)
                               ? "bg-red-100 text-red-800"
                               : task.status === "done"
@@ -641,7 +641,7 @@ export default function DashboardPage() {
 
                 <button
                   onClick={() => toggleDone(selectedTask)}
-                  className={`mt-5 w-full rounded-xl px-4 py-2 text-sm font-medium transition ${
+                  className={`mt-5 w-full rounded-xl px-4 py-2 text-sm font-medium shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md ${
                     selectedTask.status === "done"
                       ? "bg-green-100 text-green-800 hover:bg-green-200"
                       : "bg-slate-900 text-white hover:bg-slate-700"
@@ -652,7 +652,7 @@ export default function DashboardPage() {
 
                 <button
                   onClick={() => deleteTask(selectedTask.id)}
-                  className="mt-3 w-full rounded-xl bg-red-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-700"
+                  className="mt-3 w-full rounded-xl bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md"
                 >
                   Delete Task
                 </button>
@@ -669,7 +669,7 @@ export default function DashboardPage() {
                 <button
                   onClick={() => generateEmergencyPlan(selectedTask)}
                   disabled={rescueLoading}
-                  className="mt-5 w-full rounded-xl bg-orange-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-orange-700 disabled:opacity-50"
+                  className="mt-5 w-full rounded-xl bg-orange-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition duration-200 hover:-translate-y-1 hover:bg-orange-700 hover:shadow-md disabled:opacity-50"
                 >
                   {rescueLoading
                     ? "Generating Emergency Plan..."
@@ -703,7 +703,7 @@ function StatCard({
   return (
     <button
       onClick={onClick}
-      className="rounded-3xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:bg-slate-50 hover:shadow-md"
+      className="rounded-3xl border border-slate-200 bg-white p-5 text-left shadow-sm transition duration-200 hover:-translate-y-1 hover:bg-slate-50 hover:shadow-md"
     >
       <p className="text-sm text-slate-500">{label}</p>
       <p className="mt-2 text-2xl font-bold text-slate-900">{value}</p>
