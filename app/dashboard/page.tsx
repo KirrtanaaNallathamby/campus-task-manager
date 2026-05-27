@@ -524,20 +524,35 @@ export default function DashboardPage() {
                   (task) => task.due_date === formatDate(day)
                 );
 
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                const currentDay = new Date(day);
+                currentDay.setHours(0, 0, 0, 0);
+
+                const isPast = currentDay < today;
+                const isToday = currentDay.getTime() === today.getTime();
+                const isCurrentMonth =
+                  day.getMonth() === currentMonth.getMonth();
+
                 return (
                   <div
                     key={index}
                     className={`min-h-28 rounded-2xl border border-slate-200 p-2 ${
-                      day.getMonth() === currentMonth.getMonth()
+                      !isCurrentMonth
+                        ? "bg-white text-slate-300"
+                        : isPast
                         ? "bg-slate-50"
-                        : "bg-white text-slate-300"
+                        : "bg-white"
                     }`}
                   >
                     <div
                       className={`inline-flex h-7 w-7 items-center justify-center rounded-full text-sm font-medium ${
-                        formatDate(day) === formatDate(new Date())
+                        isToday
                           ? "bg-slate-900 text-white"
-                          : ""
+                          : isPast
+                          ? "text-slate-300"
+                          : "text-slate-700"
                       }`}
                     >
                       {day.getDate()}
