@@ -92,7 +92,7 @@ export default function Home() {
                 <>
                   <Link
                     href="/auth"
-                    className="rounded-2xl bg-slate-900 px-6 py-4 font-medium text-white shadow-sm hover:bg-slate-700"
+                    className="rounded-2xl bg-slate-900 px-6 py-4 font-medium text-white text-white shadow-sm transition duration-200 hover:-translate-y-1 hover:bg-slate-900 hover:text-white hover:shadow-lg"
                   >
                     Get Started
                   </Link>
@@ -150,14 +150,14 @@ export default function Home() {
   );
 }
 
-function FeatureCard({ title, text }: { title: string; text: string }) {
-  return (
-    <div className="flex items-center gap-4 rounded-2xl bg-slate-50 p-4 transition duration-200 hover:-translate-y-1 hover:shadow-md">
-      <h2 className="font-semibold text-slate-900">{title}</h2>
-      <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
-    </div>
-  );
-}
+  function FeatureCard({ title, text }: { title: string; text: string }) {
+    return (
+      <div className="flex items-center gap-4 rounded-2xl bg-slate-50 p-4 transition duration-200 hover:-translate-y-1 hover:shadow-md">
+        <h2 className="font-semibold text-slate-900">{title}</h2>
+        <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+      </div>
+    );
+  }
 
 function HomeStep({
   number,
